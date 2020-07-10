@@ -3,5 +3,7 @@
   "email": "Email",
   "password": "Password",
   "passwordConfirmation": "Password Confirmation",
-  "submit": "Submit"
+  "submit": "Submit",
+  "country": "Country",
+  "city": "City"
 }

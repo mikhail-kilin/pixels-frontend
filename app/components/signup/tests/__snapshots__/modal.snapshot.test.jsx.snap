@@ -48,6 +48,40 @@ exports[`SignupModal renders correctly 1`] = `
     >
       <label
         className="control-label"
+        htmlFor="country"
+      >
+        Country
+      </label>
+      <input
+        className="form-control"
+        id="country"
+        name="country"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="control-label"
+        htmlFor="city"
+      >
+        City
+      </label>
+      <input
+        className="form-control"
+        id="city"
+        name="city"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="control-label"
         htmlFor="password"
       >
         Password
@@ -127,6 +161,40 @@ exports[`SignupModal when form is invalid renders form with validation errors 1`
         className="form-control"
         id="email"
         name="email"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group has-success"
+    >
+      <label
+        className="control-label"
+        htmlFor="country"
+      >
+        Country
+      </label>
+      <input
+        className="form-control"
+        id="country"
+        name="country"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group has-success"
+    >
+      <label
+        className="control-label"
+        htmlFor="city"
+      >
+        City
+      </label>
+      <input
+        className="form-control"
+        id="city"
+        name="city"
         onChange={[Function]}
         type="text"
       />

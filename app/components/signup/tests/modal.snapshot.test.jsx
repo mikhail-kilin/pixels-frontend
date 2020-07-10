@@ -30,6 +30,8 @@ describe('SignupModal', () => {
       component.getInstance().setState({
         name: 'qwe',
         email: 'qwe',
+        country: 'qwe',
+        city: 'qwe',
         password: 'asd',
         passwordConfirmation: 'asd',
       });

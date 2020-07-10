@@ -15,6 +15,8 @@ class SignupModal extends Component {
   state = {
     name: '',
     email: '',
+    country: '',
+    city: '',
     password: '',
     passwordConfirmation: '',
     errors: {},
@@ -30,11 +32,15 @@ class SignupModal extends Component {
     const {
       name,
       email,
+      country,
+      city,
       password,
       passwordConfirmation,
     } = this.state;
 
     return (
+      country.trim().length &&
+      city.trim().length &&
       name.trim().length &&
       email.length > 5 &&
       password.length > 5 &&
@@ -77,6 +83,8 @@ class SignupModal extends Component {
     const {
       name,
       email,
+      country,
+      city,
       password,
       passwordConfirmation,
     } = this.state;
@@ -85,11 +93,13 @@ class SignupModal extends Component {
     if (this.isFormValid()) {
       try {
         await signupUser({
-          name, email, password, passwordConfirmation,
+          name, email, country, city, password, passwordConfirmation,
         });
         this.setState({
           name: '',
           email: '',
+          country: '',
+          city: '',
           password: '',
           passwordConfirmation: '',
         });
@@ -104,6 +114,8 @@ class SignupModal extends Component {
     const {
       name,
       email,
+      country,
+      city,
       password,
       passwordConfirmation,
     } = this.state;
@@ -141,6 +153,28 @@ class SignupModal extends Component {
             <FormControl
               type="text"
               name="email"
+              onChange={this.setValue}
+            />
+          </FormGroup>
+          <FormGroup
+            controlId="country"
+            validationState={this.nameValidationState(country)}
+          >
+            <ControlLabel>{ i18n.t('session:country') }</ControlLabel>
+            <FormControl
+              type="text"
+              name="country"
+              onChange={this.setValue}
+            />
+          </FormGroup>
+          <FormGroup
+            controlId="city"
+            validationState={this.nameValidationState(city)}
+          >
+            <ControlLabel>{ i18n.t('session:city') }</ControlLabel>
+            <FormControl
+              type="text"
+              name="city"
               onChange={this.setValue}
             />
           </FormGroup>
