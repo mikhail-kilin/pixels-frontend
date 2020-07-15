@@ -16,7 +16,7 @@ api.interceptors.request.use(
       headers: {
         ...axiosConfig.headers,
         'X-User-Email': currentUser.email,
-        'X-User-Token': currentUser.token,
+        'Authentication_token': currentUser.token,
       },
     };
   },

@@ -1858,6 +1858,11 @@ cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
 
+cookie-storage-v2@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/cookie-storage-v2/-/cookie-storage-v2-1.1.1.tgz#12b58c12c914c650d4d4d5c77cb6ef1e3d69b631"
+  integrity sha1-ErWMEskUxlDU1NXHfLbvHj1ptjE=
+
 cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
