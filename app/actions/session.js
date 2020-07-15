@@ -37,7 +37,6 @@ export const signupUser = user =>
 
 export const logoutUser = user =>
   async (dispatch) => {
-    await sessionSource.logout(user);
     sessionStorage.remove();
     dispatch(removeUser());
   };
