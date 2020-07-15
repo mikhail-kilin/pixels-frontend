@@ -1,5 +1,4 @@
 import React from "react";
-import "./FooterColorPalette.css";
 
 const colors = [
   'rgb(255, 255, 255)',
@@ -26,6 +25,7 @@ const FooterColorPalette = function(props) {
       <div id="color-palette">
       {colors.map((color)=>(
         <ColorOption
+          key={color}
           color={color}
           isSelected={color === props.selectedColor}
           onColorSelected={() => props.onColorSelected(color)}

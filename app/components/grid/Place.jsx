@@ -8,7 +8,7 @@ class Place extends Component {
     super(props);
     this.onColorSelected = this.onColorSelected.bind(this);
     this.state = {
-      selectedColor: null,
+      selectedColor: 'rgb(255, 255, 255)',
     }
   }
 

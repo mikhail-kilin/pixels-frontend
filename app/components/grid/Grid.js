@@ -1,44 +1,51 @@
 import React, { Component } from "react";
 import GridItem from "./GridItem";
 import source from 'sources/cell';
-import "./Grid.css";
 
 export default class Grid extends Component {
   constructor(props) {
     super(props);
-    const result = source.get_all();
-
-    var arr = [];
-    for (var i = 0; i < 1000; i++) {
-      arr[i] = [];
-      for (var j = 0; j < 1000; j++) {
-        arr[i][j] = "#FFFFFF"
-      }
-    }
-    for(let i = 0; i < result.length; i++) {
-        arr[result[i].x, result[i].y] = result.color;
-    }
 
     this.state = {
-      drawing: arr,
+      result: null,
     };
+    this.setData();
+  }
+
+  async setData() {
+    const result = await source.get_all();
+    this.setState({
+      result: result,
+    });
   }
 
   render() {
-    if (!this.state.drawing) {
+    if (!this.state.result) {
       return <div>"Loading..."</div>;
     }
+    var arr = [];
+    for (var i = 0; i < 100; i++) {
+      arr[i] = [];
+      for (var j = 0; j < 100; j++) {
+        arr[i][j] = 'rgb(228, 228, 228)'
+      }
+    }
+    const result = this.state.result;
+    for (var k = 0; k < result.length; k++) {
+      arr[result[k].x][result[k].y] = result[k].color;
+    }
     const gridItems = [];
-    for (let rowIndex = 0; rowIndex < this.state.drawing.length; rowIndex++) {
-      gridItems[rowIndex] = [];
-      for (let columnIndex = 0; columnIndex < this.state.drawing[rowIndex].length; columnIndex++) {
-        gridItems[rowIndex].push(
-          <GridItem
-            color={this.state.drawing[rowIndex][columnIndex]}
-            rowIndex={rowIndex}
-            columnIndex={columnIndex}
-            selectedColor={this.props.selectedColor}
-          />,
+    for (let rowIndex = 0; rowIndex < arr.length; rowIndex++) {
+      gridItems[rowIndex] = {item: [], rowIndex: rowIndex};
+      for (let columnIndex = 0; columnIndex < arr[rowIndex].length; columnIndex++) {
+        gridItems[rowIndex].item.push(
+            <GridItem
+              key={columnIndex}
+              color={arr[rowIndex][columnIndex]}
+              rowIndex={rowIndex}
+              columnIndex={columnIndex}
+              selectedColor={this.props.selectedColor}
+            />,
         );
       }
     }
@@ -46,7 +53,7 @@ export default class Grid extends Component {
     return (
       <div>
         {gridItems.map(rowItem => {
-          return <div className="GridRow">{rowItem}</div>;
+          return <div className="GridRow" key={rowItem.rowIndex}>{rowItem.item}</div>;
         })}
       </div>
     );

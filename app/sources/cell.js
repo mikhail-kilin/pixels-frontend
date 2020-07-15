@@ -5,7 +5,7 @@ export default {
   
   async color(cell) {
     return (
-      await api.post(`${this.urlRoot}/put` , cell)
+      await api.post(`${this.urlRoot}`, cell)
     ).data
   },
   async get_all() {

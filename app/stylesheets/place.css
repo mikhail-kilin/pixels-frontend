@@ -1,3 +1,17 @@
+.GridItem {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  margin: 0;
+  padding: 0;
+}
+
+.GridItem:hover {
+  height: 6px;
+  width: 6px;
+  border: 1px solid black;
+  cursor: pointer;
+}
 #footer-bar {
   background-color: lightgray;
   position: absolute;
@@ -31,4 +45,7 @@
   height: 28px;
   width: 28px;
   margin: 3px;
+}
+.GridRow {
+  display: flex;
 }

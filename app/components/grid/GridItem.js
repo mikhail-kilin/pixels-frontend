@@ -1,5 +1,5 @@
 import React from "react";
-import "./GridItem.css";
+import source from 'sources/cell';
 
 class GridItem extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class GridItem extends React.Component {
 
   handleClick = () => {
     const color = this.props.selectedColor;
-    source.color({x: this.props.columnIndex, y: this.props.rowIndex, color: color});
+    source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
     this.setState({ color });
     
   };

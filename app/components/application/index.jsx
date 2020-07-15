@@ -12,7 +12,6 @@ const Application = () => (
       <Navigation />
       <ApplicationRoutes />
     </main>
-    <Footer />
     <Modal />
     <Alert stack={{ limit: 3 }} html />
   </div>
