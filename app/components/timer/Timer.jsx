@@ -36,7 +36,7 @@ class Timer extends Component {
       let time = this.state.time;
       let seconds = this.state.seconds;
       if (Storage.get("timer") > 0) {
-        seconds = Number(Storage.get("timer")) * 1000;
+        seconds = Number(Storage.get("timer"));
         time = new Date();
         time.setTime(seconds);
         time.setHours(0);

@@ -22,7 +22,7 @@ class GridItem extends React.Component {
     const color = this.props.selectedColor;
     source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
     this.setState({ color });
-    Storage.set("timer", (await time.get()).rollback_time);
+    Storage.set("timer", (await time.get()).rollback_time * 1000);
   };
 
   render() {
