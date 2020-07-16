@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import GridItem from "./GridItem";
 import source from 'sources/cell';
 import Timer from "components/timer/Timer";
+import Storage from "lib/storage"
+import {
+  Row,
+  Col,
+} from 'react-bootstrap';
 
-export default class Grid extends Component {
+export default class MyGrid extends Component {
   constructor(props) {
     super(props);
 
@@ -56,10 +61,17 @@ export default class Grid extends Component {
     if (result.time_left != null) {
       time = result.time_left * 1000;
     }
+    Storage.set("timer", time);
 
     return (
       <div>
-        <div><Timer time={time}/></div>
+        <div>
+          <Row>
+            <Col md={2} className={"col-md-offset-5"}>
+              <Timer time={time}/>
+            </Col>
+          </Row>
+        </div>
         {gridItems.map(rowItem => {
           return <div className="GridRow" key={rowItem.rowIndex}>{rowItem.item}</div>;
         })}

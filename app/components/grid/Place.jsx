@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import FooterColorPalette from "./FooterColorPalette";
-import Grid from "./Grid";
+import MyGrid from "./MyGrid";
+import {
+  Grid
+} from 'react-bootstrap';
 
 
 class Place extends Component {
@@ -21,13 +24,15 @@ class Place extends Component {
 
   render() {
     return (
-      <div className="Place">
-        <Grid selectedColor={this.state.selectedColor} />
-        <FooterColorPalette
-          onColorSelected={this.onColorSelected}
-          selectedColor={this.state.selectedColor}
-        />
-      </div>
+      <Grid>
+        <div className="Place">
+          <MyGrid selectedColor={this.state.selectedColor} />
+          <FooterColorPalette
+            onColorSelected={this.onColorSelected}
+            selectedColor={this.state.selectedColor}
+          />
+        </div>
+      </Grid>
     );
   }
 }

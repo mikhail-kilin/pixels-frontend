@@ -8,6 +8,7 @@ import store from 'stores/application';
 import appHistory from 'services/history';
 import Application from 'components/application';
 
+
 const renderComponent = (Component) => {
   render(
     <AppContainer>

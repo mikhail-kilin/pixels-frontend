@@ -1,14 +1,14 @@
 .GridItem {
   display: inline-block;
-  height: 7px;
-  width: 7px;
+  height: 6px;
+  width: 6px;
   margin: 0;
   padding: 0;
 }
 
 .GridItem:hover {
-  height: 6px;
-  width: 6px;
+  height: 5px;
+  width: 5px;
   border: 1px solid black;
   cursor: pointer;
 }
