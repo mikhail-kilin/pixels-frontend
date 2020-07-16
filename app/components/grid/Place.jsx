@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FooterColorPalette from "./FooterColorPalette";
 import Grid from "./Grid";
 
+
 class Place extends Component {
 
   constructor(props) {
@@ -21,7 +22,6 @@ class Place extends Component {
   render() {
     return (
       <div className="Place">
-        <div>Color this grid</div>
         <Grid selectedColor={this.state.selectedColor} />
         <FooterColorPalette
           onColorSelected={this.onColorSelected}

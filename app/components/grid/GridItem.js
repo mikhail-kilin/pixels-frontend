@@ -1,5 +1,7 @@
 import React from "react";
 import source from 'sources/cell';
+import Storage from "lib/storage"
+import time from 'sources/time';
 
 class GridItem extends React.Component {
   constructor(props) {
@@ -9,18 +11,18 @@ class GridItem extends React.Component {
     };
   }
 
-  // This is needed to properly render updates from socket.io
   componentDidUpdate(prevProps) {
     if (prevProps.color !== this.props.color) {
       this.setState({color: this.props.color});
     }
   }
 
-  handleClick = () => {
+  handleClick = async () => {
+    if (Storage.get("timer") > 0) return;
     const color = this.props.selectedColor;
     source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
     this.setState({ color });
-    
+    Storage.set("timer", (await time.get()).rollback_time);
   };
 
   render() {
