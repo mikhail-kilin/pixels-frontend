@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GridItem from "./GridItem";
 import source from 'sources/cell';
+import Timer from "components/timer/Timer";
 
 export default class Grid extends Component {
   constructor(props) {
@@ -24,24 +25,26 @@ export default class Grid extends Component {
       return <div>"Loading..."</div>;
     }
     var arr = [];
-    for (var i = 0; i < 100; i++) {
-      arr[i] = [];
-      for (var j = 0; j < 100; j++) {
-        arr[i][j] = 'rgb(228, 228, 228)'
-      }
-    }
     const result = this.state.result;
     for (var k = 0; k < result.length; k++) {
+      if (arr[result[k].x] == null) {
+        arr[result[k].x] = [];
+      }
       arr[result[k].x][result[k].y] = result[k].color;
     }
     const gridItems = [];
-    for (let rowIndex = 0; rowIndex < arr.length; rowIndex++) {
+
+    for (let rowIndex = 0; rowIndex < 100; rowIndex++) {
       gridItems[rowIndex] = {item: [], rowIndex: rowIndex};
-      for (let columnIndex = 0; columnIndex < arr[rowIndex].length; columnIndex++) {
+      for (let columnIndex = 0; columnIndex < 200; columnIndex++) {
+        let color = 'rgb(228, 228, 228)';
+        if (arr[rowIndex] != null && arr[rowIndex][columnIndex] != null) {
+          color = arr[rowIndex][columnIndex];
+        }
         gridItems[rowIndex].item.push(
             <GridItem
               key={columnIndex}
-              color={arr[rowIndex][columnIndex]}
+              color={color}
               rowIndex={rowIndex}
               columnIndex={columnIndex}
               selectedColor={this.props.selectedColor}
@@ -49,9 +52,14 @@ export default class Grid extends Component {
         );
       }
     }
+    let time = 0
+    if (result.time_left != null) {
+      time = result.time_left * 1000;
+    }
 
     return (
       <div>
+        <div><Timer time={time}/></div>
         {gridItems.map(rowItem => {
           return <div className="GridRow" key={rowItem.rowIndex}>{rowItem.item}</div>;
         })}
