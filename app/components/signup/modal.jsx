@@ -37,12 +37,13 @@ class SignupModal extends Component {
       password,
       passwordConfirmation,
     } = this.state;
+    var emailReg = /.+@.+\..+/;
 
     return (
       country.trim().length &&
       city.trim().length &&
       name.trim().length &&
-      email.length > 5 &&
+      emailReg.test(email) &&
       password.length > 5 &&
       passwordConfirmation.length > 5 &&
       this.isValidPassword()
@@ -62,6 +63,13 @@ class SignupModal extends Component {
 
     return length > 5 ? 'success' : 'error';
   };
+
+  emailValidState = (value) => {
+    const { length } = value;
+    if (!length) return null;
+    var emailReg = /.+@.+\..+/;
+    return emailReg.test(value) ? 'success' : 'error';
+  }
 
   nameValidationState = (value) => {
     const { length } = value.trim();
@@ -147,7 +155,7 @@ class SignupModal extends Component {
           </FormGroup>
           <FormGroup
             controlId="email"
-            validationState={this.validationState(email)}
+            validationState={this.emailValidState(email)}
           >
             <ControlLabel>{ i18n.t('session:email') }</ControlLabel>
             <FormControl

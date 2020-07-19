@@ -52,7 +52,7 @@ class SigninModal extends Component {
 
     if (!length) return null;
 
-    return length > 5 ? 'success' : 'error';
+    return length > 3 ? 'success' : 'error';
   };
 
   render() {

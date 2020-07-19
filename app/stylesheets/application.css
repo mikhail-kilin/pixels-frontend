@@ -1,5 +1,5 @@
-@import "bootstrap";
-/*@import "bootswatch/dist/cyborg/bootstrap.css";*/
+
+@import "bootswatch/darkly/bootstrap.css";
 @import "react-s-alert/dist/s-alert-default";
 @import "vars";
 @import "base";
