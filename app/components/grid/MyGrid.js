@@ -27,13 +27,6 @@ export default class MyGrid extends Component {
       let data = response['data'];
       let json = JSON.parse(data);
       document.getElementsByClassName("GridRow")[json.x].getElementsByClassName("GridItem")[json.y].setAttribute("style", "background-color:" + json.color);
-      /*let result = {
-        pixels: context.state.result.pixels
-      };
-      result.pixels.push({x: json.x, y: json.y, color: json.color})
-      context.setState({
-        result: result,
-      });*/
     }
   }
 
