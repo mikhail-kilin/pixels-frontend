@@ -30,8 +30,6 @@ export const signupUser = user =>
 
     const result = await usersSource.create(user);
 
-    sessionStorage.set(result);
-    dispatch(setUser(result));
     appHistory.push(paths.home());
   };
 

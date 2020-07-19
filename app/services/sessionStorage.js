@@ -7,7 +7,7 @@ export default class SessionStorage {
   }
 
   static loggedIn() {
-    return Object.keys(this.currentUser()).length !== 0;
+    return this.currentUser() != null && this.currentUser().hasOwnProperty("authentication_token");
   }
 
   static set(user) {

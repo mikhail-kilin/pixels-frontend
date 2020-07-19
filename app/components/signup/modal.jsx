@@ -203,7 +203,6 @@ class SignupModal extends Component {
           <Button
             bsStyle="primary"
             type="submit"
-            disabled={isLoading}
           >
             { i18n.t('session:submit') }
           </Button>

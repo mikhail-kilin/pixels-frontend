@@ -30,7 +30,7 @@ export default class MyGrid extends Component {
       return <div>"Loading..."</div>;
     }
     var arr = [];
-    const result = this.state.result;
+    const result = this.state.result.pixels;
     for (var k = 0; k < result.length; k++) {
       if (arr[result[k].x] == null) {
         arr[result[k].x] = [];
@@ -58,9 +58,7 @@ export default class MyGrid extends Component {
       }
     }
     let time = 0
-    if (result.time_left != null) {
-      time = result.time_left * 1000;
-    }
+    time = this.state.result.rollback_time * 1000;
     Storage.set("timer", time);
 
     return (

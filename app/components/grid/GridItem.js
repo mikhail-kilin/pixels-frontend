@@ -20,9 +20,13 @@ class GridItem extends React.Component {
   handleClick = async () => {
     if (Storage.get("timer") > 0) return;
     const color = this.props.selectedColor;
-    source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
-    this.setState({ color });
-    Storage.set("timer", (await time.get()).rollback_time * 1000);
+    let result = await source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
+    this.setState({ color: color });
+    if (result.time_left != null) {
+      Storage.set("timer", (await result.time_left * 1000))
+    } else {
+      Storage.set("timer", (await time.get()).rollback_time * 1000);
+    }
   };
 
   render() {
