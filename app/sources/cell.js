@@ -1,7 +1,7 @@
 import api from 'services/api';
 
 export default {
-  urlRoot: '/cell',
+  urlRoot: '/pixels',
   
   async color(cell) {
     return (

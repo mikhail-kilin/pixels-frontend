@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Main from 'containers/main';
-import About from 'components/about';
+import Info from 'components/info';
 import Profile from 'containers/profile';
 import { routes } from 'helpers/routes';
 
@@ -12,7 +12,7 @@ const ApplicationRoutes = () => (
       path={routes.home}
       component={Main}
     />
-    <Route path={routes.about} component={About} />
+    <Route path={routes.info} component={Info} />
     <Route path={routes.profile} component={Profile} />
     <Redirect to={routes.home} />
   </Switch>

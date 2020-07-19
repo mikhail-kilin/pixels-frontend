@@ -6,6 +6,7 @@ import { paths } from 'helpers/routes';
 import styles from './styles.css';
 import NavItemLink from './navItemLink';
 
+
 const Navigation = ({
   loggedIn, currentUser, logout, signin, signup,
 }) => {
@@ -47,6 +48,16 @@ const Navigation = ({
     );
   };
 
+  const renderInfo = () => {
+    if (loggedIn) {
+      return (
+        <NavItemLink to={paths.info()}>
+          { "Info" }
+        </NavItemLink>
+      );
+    }
+  }
+
   return (
     <Navbar className={styles.panel}>
       <Navbar.Header>
@@ -58,9 +69,7 @@ const Navigation = ({
         <NavItemLink to={paths.home()} exact>
           { i18n.t('header:home') }
         </NavItemLink>
-        <NavItemLink to={paths.about()}>
-          { i18n.t('header:about') }
-        </NavItemLink>
+        { renderInfo() } 
       </Nav>
       { renderRightNav() }
     </Navbar>

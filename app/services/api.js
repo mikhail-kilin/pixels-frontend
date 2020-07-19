@@ -35,7 +35,7 @@ api.interceptors.response.use(
     if (errorResponse) {
       if (errorResponse.status === 401) {
         sessionStorage.remove();
-      } else {
+      } else if (errorResponse.status !== 403 && errorResponse.status !== 500){
         Alert.error(errorResponse.data.error);
       }
     } else if (message === 'Network Error') {

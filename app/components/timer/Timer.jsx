@@ -49,7 +49,8 @@ class Timer extends Component {
   }
 
   render() {
-  return (<h2>{this.state.time.toLocaleTimeString()}</h2>);
+    let time = this.state.time.toLocaleTimeString().split(":")
+  return (<h2>{time[1] + ":" + time[2]}</h2>);
   }
 }
 

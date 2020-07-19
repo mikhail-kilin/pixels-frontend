@@ -7,6 +7,7 @@ export const routes = {
   signin: '/signin',
   signup: '/signup',
   aboutExtended: '/about/extended/:id',
+  info: "/info",
 };
 
 export const paths = {};
