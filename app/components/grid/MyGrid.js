@@ -16,6 +16,25 @@ export default class MyGrid extends Component {
       result: null,
     };
     this.setData();
+    this.connect();
+  }
+
+  async connect() {
+    let webSocket = new WebSocket('ws://localhost:8080/chat');
+    let context = this;
+    webSocket.onmessage = function receiveMessage(response) {
+      console.log(this);
+      let data = response['data'];
+      let json = JSON.parse(data);
+      document.getElementsByClassName("GridRow")[json.x].getElementsByClassName("GridItem")[json.y].setAttribute("style", "background-color:" + json.color);
+      /*let result = {
+        pixels: context.state.result.pixels
+      };
+      result.pixels.push({x: json.x, y: json.y, color: json.color})
+      context.setState({
+        result: result,
+      });*/
+    }
   }
 
   async setData() {
@@ -58,8 +77,10 @@ export default class MyGrid extends Component {
       }
     }
     let time = 0
-    time = this.state.result.rollback_time * 1000;
-    Storage.set("timer", time);
+    if (this.state.result.rollback_time != null) {
+      time = this.state.result.rollback_time * 1000;
+      Storage.set("timer", time);
+    }
 
     return (
       <div>

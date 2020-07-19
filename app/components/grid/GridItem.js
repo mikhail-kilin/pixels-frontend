@@ -21,7 +21,7 @@ class GridItem extends React.Component {
     if (Storage.get("timer") > 0) return;
     const color = this.props.selectedColor;
     let result = await source.color({x: this.props.rowIndex, y: this.props.columnIndex, color: color, id: Math.floor(Math.random() * Math.floor(10000))});
-    this.setState({ color: color });
+    //this.setState({ color: color });
     if (result.time_left != null) {
       Storage.set("timer", (await result.time_left * 1000))
     } else {
