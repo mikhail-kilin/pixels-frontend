@@ -19,11 +19,22 @@ export default class MyGrid extends Component {
     this.connect();
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.connect(),
+      1000 * 60
+    );
+  }
+
   async connect() {
-    let webSocket = new WebSocket('ws://164.90.218.141/ws/pixels');
+    let webSocket = new WebSocket('ws://localhost:8080/pixels');
+    console.log(webSocket);
     let context = this;
     webSocket.onmessage = function receiveMessage(response) {
-      console.log(this);
       let data = response['data'];
       let json = JSON.parse(data);
       document.getElementsByClassName("GridRow")[json.x].getElementsByClassName("GridItem")[json.y].setAttribute("style", "background-color:" + json.color);
