@@ -31,7 +31,7 @@ export default class MyGrid extends Component {
   }
 
   async connect() {
-    let webSocket = new WebSocket('ws://localhost:8080/pixels');
+    let webSocket = new WebSocket('ws://164.90.218.141/ws/pixels');
     console.log(webSocket);
     let context = this;
     webSocket.onmessage = function receiveMessage(response) {
